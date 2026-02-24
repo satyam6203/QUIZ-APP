@@ -1,6 +1,9 @@
 function startQuiz(quizType) {
     alert(`Starting ${quizType.charAt(0).toUpperCase() + quizType.slice(1)} Quiz!`);
     
-    // Redirecting to the corresponding quiz page based on the selected type
-    window.location.href = `${quizType}-quiz.html`; // Assumes pages are named quiz-java.html, quiz-python.html, etc.
+    // Convert to lowercase for consistency
+    const normalizedType = quizType.toLowerCase();
+
+    // Redirect to the quiz page with the quiz type as a parameter
+    window.location.href = `Quiz.html?type=${normalizedType}`;
 }

@@ -1,6 +1,6 @@
 package com.Quiz.Backend.Config;
 
-import com.Quiz.Backend.Service.interfaces.CustomerUserDetails;
+//import com.Quiz.Backend.Service.interfaces.CustomerUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,30 +17,30 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class QuizConfig {
 
-    private final CustomerUserDetails customerUserDetails;
+//    private final CustomerUserDetails customerUserDetails;
 
-    @Autowired
-    public QuizConfig(CustomerUserDetails customerUserDetails) {
-        this.customerUserDetails = customerUserDetails;
-    }
+//    @Autowired
+//    public QuizConfig(CustomerUserDetails customerUserDetails) {
+//        this.customerUserDetails = customerUserDetails;
+//    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(request -> request
-                        .requestMatchers("/quiz/**", "/login", "/register").permitAll()
-                        .anyRequest().authenticated()
-                );
-        return httpSecurity.build();
+    httpSecurity.csrf(AbstractHttpConfigurer::disable)
+        .authorizeHttpRequests(request -> request
+            .requestMatchers("/quiz/**", "/login", "/register").permitAll()
+            .anyRequest().authenticated()
+        );
+    return httpSecurity.build();
     }
 
-    @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setUserDetailsService(customerUserDetails);
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
-        return daoAuthenticationProvider;
-    }
+//    @Bean
+//    public AuthenticationProvider authenticationProvider() {
+//        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+//        daoAuthenticationProvider.setUserDetailsService(customerUserDetails);
+//        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
+//        return daoAuthenticationProvider;
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {

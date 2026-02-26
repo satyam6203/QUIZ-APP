@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Question Form</title>
+    <link rel="stylesheet" href="../CSS/Admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="wrapper">
+        <form class="form">
+            <h2>Add Question</h2>
+            <div class="select-box">
+                <label>Select Topic</label>
+                <select>
+                    <option value="">Select topic</option>
+                    <option value="java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="js">JavaScript</option>
+                    <option value="cpp">C++</option>
+                </select>
+            </div>
+            
+            <textarea placeholder="Enter the question..."></textarea>
+            <input type="text" placeholder="Option 1">
+            <input type="text" placeholder="Option 2">
+            <input type="text" placeholder="Option 3">
+            <input type="text" placeholder="Option 4">
+            <input type="text" placeholder="Correct Ans">
+            <div class="btn-group">
+                <button type="submit" class="submit">Submit</button>
+                <button type="reset" class="reset">Reset</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

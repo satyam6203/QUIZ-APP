@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #141e30, #243b55);
+}
+
+/* Glass Card */
+.wrapper {
+    width: 440px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
+    border-radius: 24px;
+    padding: 35px 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.15);
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form h2 {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Inputs */
+textarea,
+input,
+select {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    transition: 0.25s ease;
+    background: rgba(255,255,255,0.9);
+}
+
+/* Focus glow */
+textarea:focus,
+input:focus,
+select:focus {
+    box-shadow: 0 0 0 3px rgba(0, 201, 167, 0.35);
+    transform: scale(1.01);
+}
+
+textarea {
+    resize: none;
+    height: 110px;
+}
+
+/* Dropdown container */
+.select-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.select-box label {
+    color: #eaeaea;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+button {
+    flex: 1;
+    padding: 13px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s ease;
+    letter-spacing: 0.4px;
+}
+
+/* Submit gradient */
+.submit {
+    background: linear-gradient(135deg, #00c9a7, #00e4b3);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(0,201,167,0.4);
+}
+
+.submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,201,167,0.5);
+}
+
+/* Reset gradient */
+.reset {
+    background: linear-gradient(135deg, #ff4b5c, #ff6b81);
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(255,75,92,0.35);
+}
+
+.reset:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255,75,92,0.45);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .wrapper {
+        width: 92%;
+        padding: 25px 20px;
+    }
+}

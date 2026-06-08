@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # Spring Boot Application Service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: quiz-backend
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    networks:
+      - quiz-network
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+
+networks:
+  quiz-network:
+    driver: bridge

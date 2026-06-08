@@ -6,7 +6,7 @@ let totalQuestions = 0;
 const params = new URLSearchParams(window.location.search);
 const quizType = params.get("type") || "java";
 
-const API_BASE = "http://localhost:8080/api";
+const API_BASE = "http://13.62.230.239:8080/api";
 
 async function fetchQuestions() {
 try {

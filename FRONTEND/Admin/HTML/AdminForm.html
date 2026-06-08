@@ -9,32 +9,36 @@
 </head>
 <body>
 
-    <div class="wrapper">
-        <form class="form">
-            <h2>Add Question</h2>
-            <div class="select-box">
-                <label>Select Topic</label>
-                <select>
-                    <option value="">Select topic</option>
-                    <option value="java">Java</option>
-                    <option value="python">Python</option>
-                    <option value="js">JavaScript</option>
-                    <option value="cpp">C++</option>
-                </select>
-            </div>
-            
-            <textarea placeholder="Enter the question..."></textarea>
-            <input type="text" placeholder="Option 1">
-            <input type="text" placeholder="Option 2">
-            <input type="text" placeholder="Option 3">
-            <input type="text" placeholder="Option 4">
-            <input type="text" placeholder="Correct Ans">
-            <div class="btn-group">
-                <button type="submit" class="submit">Submit</button>
-                <button type="reset" class="reset">Reset</button>
-            </div>
-        </form>
-    </div>
+<div class="wrapper">
+    <form class="form" id="quizForm">
+        <h2>Add Question</h2>
+
+        <div class="select-box">
+            <label>Select Topic</label>
+            <select id="topic">
+                <option value="">Select topic</option>
+                <option value="java">Java</option>
+                <option value="python">Python</option>
+                <option value="js">JavaScript</option>
+                <option value="cpp">C++</option>
+            </select>
+        </div>
+
+        <textarea id="question" placeholder="Enter the question..."></textarea>
+        <input type="text" id="opt1" placeholder="Option 1">
+        <input type="text" id="opt2" placeholder="Option 2">
+        <input type="text" id="opt3" placeholder="Option 3">
+        <input type="text" id="opt4" placeholder="Option 4">
+        <input type="text" id="correct" placeholder="Correct Ans">
+
+        <div class="btn-group">
+            <button type="submit" class="submit">Submit</button>
+            <button type="reset" class="reset">Reset</button>
+        </div>
+    </form>
+</div>
+
+<script src="../JS/adminForm.js"></script>
 
 </body>
 </html>

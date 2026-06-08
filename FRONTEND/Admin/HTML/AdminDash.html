@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../CSS/AdminDash.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
+
     <div class="wrapper">
+
+        <!-- 🔹 Sidebar -->
         <div class="sidebar">
-            <div class="profile">
-            </div>
+
+            <div class="profile"></div>
+
+            <h2 class="admin-title">Admin Panel</h2>
+
             <div class="dataBtn">
-                <div class="insert">
-                    <a href="../HTML/AdminForm.html">Insert Data</a>
-                </div>
-                <div class="showdata">
-                    <a href="#">Show Data</a>
-                </div>
+
+                <a href="../HTML/AdminForm.html" target="contentFrame" class="menu-btn">
+                    Insert Data
+                </a>
+
+                <a href="../HTML/AdminData.html" target="contentFrame" class="menu-btn">
+                    Show Data
+                </a>
+
             </div>
+
         </div>
+
+        <!-- 🔹 Content Area -->
         <div class="content">
-            content
+            <iframe name="contentFrame" id="contentFrame"></iframe>
         </div>
+
     </div>
+
 </body>
 </html>

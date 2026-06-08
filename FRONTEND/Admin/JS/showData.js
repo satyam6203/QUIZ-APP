@@ -1,16 +1,7 @@
-const BASE_URL = "http://13.62.230.239:8080/api";
-
 const topicSelect = document.getElementById("topicSelect");
 const tableBody = document.getElementById("tableBody");
-const quizForm = document.getElementById("quizForm");
 
-let currentEditId = null;
-let currentEditTopic = null;
-
-//fetch question
-if (topicSelect) {
-    topicSelect.addEventListener("change", fetchQuestions);
-}
+topicSelect.addEventListener("change", fetchQuestions);
 
 async function fetchQuestions() {
     const topic = topicSelect.value;
@@ -20,7 +11,7 @@ async function fetchQuestions() {
         return;
     }
 
-    const url = `${BASE_URL}/${topic}/quiz/questions`;
+    const url = `http://13.62.230.239:8080/api/${topic}/quiz/questions`;
 
     try {
         const response = await fetch(url);
@@ -40,7 +31,7 @@ async function fetchQuestions() {
                 <td><ul>${optionsList}</ul></td>
                 <td class="correct">${q.correctAnswer}</td>
                 <td class="actions">
-                    <button class="edit" onclick="editQuestion('${topic}', ${q.id}, this)">Edit</button>
+                    <button class="edit" onclick="editQuestion('${topic}', ${q.id})">Edit</button>
                     <button class="delete" onclick="deleteQuestion('${topic}', ${q.id})">Delete</button>
                 </td>
             `;
@@ -54,15 +45,21 @@ async function fetchQuestions() {
     }
 }
 
-//delete
+function editQuestion(topic, id){
+    alert("Edit feature coming next 😎 ID: " + id);
+}
+
+/* 🔴 DELETE FUNCTION */
 async function deleteQuestion(topic, id) {
 
     if (!confirm("Are you sure you want to delete this question?")) return;
 
-    const url = `${BASE_URL}/${topic}/quiz/delete/${id}`;
+    const url = `http://13.62.230.239:8080/api/${topic}/quiz/delete/${id}`;
 
     try {
-        const response = await fetch(url, { method: "DELETE" });
+        const response = await fetch(url, {
+            method: "DELETE"
+        });
 
         if (response.ok) {
             alert("Deleted successfully");
@@ -77,13 +74,17 @@ async function deleteQuestion(topic, id) {
     }
 }
 
-//edit
-function editQuestion(topic, id, btn) {
+let currentEditId = null;
+let currentEditTopic = null;
+
+/* 🔹 OPEN EDIT MODAL */
+function editQuestion(topic, id) {
 
     currentEditId = id;
     currentEditTopic = topic;
 
-    const row = btn.closest("tr");
+    // find question data from table row
+    const row = event.target.closest("tr");
 
     const questionText = row.children[1].innerText;
     const options = Array.from(row.children[2].querySelectorAll("li")).map(li => li.innerText);
@@ -99,11 +100,12 @@ function editQuestion(topic, id, btn) {
     document.getElementById("editModal").style.display = "flex";
 }
 
+/* 🔹 CLOSE MODAL */
 function closeEditModal() {
     document.getElementById("editModal").style.display = "none";
 }
 
-// update
+/* 🔹 UPDATE QUESTION */
 async function updateQuestion() {
 
     const updatedData = {
@@ -117,12 +119,14 @@ async function updateQuestion() {
         ]
     };
 
-    const url = `${BASE_URL}/${currentEditTopic}/quiz/update/${currentEditId}`;
+    const url = `http://13.62.230.239:8080/api/${currentEditTopic}/quiz/update/${currentEditId}`;
 
     try {
         const response = await fetch(url, {
             method: "PUT",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify(updatedData)
         });
 
@@ -138,51 +142,4 @@ async function updateQuestion() {
         console.error(error);
         alert("Server error");
     }
-}
-
-// add question
-if (quizForm) {
-    quizForm.addEventListener("submit", async function(e) {
-        e.preventDefault();
-
-        const topic = document.getElementById("topic").value;
-        const questionText = document.getElementById("question").value;
-        const opt1 = document.getElementById("opt1").value;
-        const opt2 = document.getElementById("opt2").value;
-        const opt3 = document.getElementById("opt3").value;
-        const opt4 = document.getElementById("opt4").value;
-        const correctAnswer = document.getElementById("correct").value;
-
-        if (!topic) {
-            alert("Please select topic");
-            return;
-        }
-
-        const quizData = {
-            questionText,
-            correctAnswer,
-            options: [opt1, opt2, opt3, opt4]
-        };
-
-        const url = `${BASE_URL}/${topic}/quiz/save`;
-
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(quizData)
-            });
-
-            if (response.ok) {
-                alert("Question saved successfully!");
-                quizForm.reset();
-            } else {
-                alert("Failed to save question");
-            }
-
-        } catch (error) {
-            console.error(error);
-            alert("Server error");
-        }
-    });
 }

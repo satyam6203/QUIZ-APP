@@ -11,7 +11,7 @@ async function fetchQuestions() {
         return;
     }
 
-    const url = `https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api/${topic}/quiz/questions`;
+    const url = `https://quiz-app-hnfbeecwhmhjaqb3.eastasia-01.azurewebsites.net/api/${topic}/quiz/questions`;
 
     try {
         const response = await fetch(url);
@@ -54,7 +54,7 @@ async function deleteQuestion(topic, id) {
 
     if (!confirm("Are you sure you want to delete this question?")) return;
 
-    const url = `https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api/${topic}/quiz/delete/${id}`;
+    const url = `https://quiz-app-hnfbeecwhmhjaqb3.eastasia-01.azurewebsites.net/api/${topic}/quiz/delete/${id}`;
 
     try {
         const response = await fetch(url, {
@@ -119,7 +119,7 @@ async function updateQuestion() {
         ]
     };
 
-    const url = `https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api/${currentEditTopic}/quiz/update/${currentEditId}`;
+    const url = `https://quiz-app-hnfbeecwhmhjaqb3.eastasia-01.azurewebsites.net/api/${currentEditTopic}/quiz/update/${currentEditId}`;
 
     try {
         const response = await fetch(url, {

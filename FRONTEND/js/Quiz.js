@@ -6,7 +6,7 @@ let totalQuestions = 0;
 const params = new URLSearchParams(window.location.search);
 const quizType = params.get("type") || "java";
 
-const API_BASE = "https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api";
+const API_BASE = "https://quiz-app-hnfbeecwhmhjaqb3.eastasia-01.azurewebsites.net/api";
 
 async function fetchQuestions() {
 try {

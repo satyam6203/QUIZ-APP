@@ -1,4 +1,4 @@
-const BASE_URL = "https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api";
+const BASE_URL = "https://quiz-app-hnfbeecwhmhjaqb3.eastasia-01.azurewebsites.net/api";
 
 const topicSelect = document.getElementById("topicSelect");
 const tableBody = document.getElementById("tableBody");

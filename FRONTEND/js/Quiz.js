@@ -6,12 +6,22 @@ let totalQuestions = 0;
 const params = new URLSearchParams(window.location.search);
 const quizType = params.get("type") || "java";
 
-const API_BASE = "https://quiz-app-hnfbeecwhmhjaqb3.eastasia-01.azurewebsites.net/api";
+const API_BASE = "https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api";
 
 async function fetchQuestions() {
 try {
-const response = await fetch(`${API_BASE}/${quizType}/quiz/questions`);
-if (!response.ok) throw new Error("API error");
+const response = await fetch(`${API_BASE}/${quizType}/quiz/questions`, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    mode: 'cors',
+    credentials: 'include'
+});
+
+if (!response.ok) {
+    throw new Error(`API error: ${response.status} ${response.statusText}`);
+}
 
 questions = await response.json();
     totalQuestions = questions.length;
@@ -23,8 +33,8 @@ questions = await response.json();
     startTimer();
 
 } catch (err) {
-    console.error(err);
-    document.getElementById("question-text").textContent = "Failed to load quiz";
+    console.error("Fetch error:", err);
+    document.getElementById("question-text").textContent = `Error: ${err.message}. Please check the console.`;
 }
 }
 

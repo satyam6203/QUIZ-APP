@@ -1,4 +1,4 @@
-const BASE_URL = "http://13.62.230.239:8080/api";
+const BASE_URL = "https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api";
 
 const topicSelect = document.getElementById("topicSelect");
 const tableBody = document.getElementById("tableBody");

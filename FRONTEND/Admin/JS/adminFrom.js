@@ -19,7 +19,7 @@ document.getElementById("quizForm").addEventListener("submit", async function(e)
         options: [opt1, opt2, opt3, opt4]
     };
 
-    const url = `http://13.62.230.239:8080/api/${topic}/quiz/save`;
+    const url = `https://radio-diagnosis-applying-therapeutic.trycloudflare.com/api/${topic}/quiz/save`;
 
     try {
         const response = await fetch(url, {
